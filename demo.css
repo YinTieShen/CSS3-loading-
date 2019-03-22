@@ -1,0 +1,144 @@
+*{
+    margin: 0;
+    padding: 0;
+    color: #fff;
+}
+
+
+html,body{
+    background-color:#db4b6d ;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.text{
+    margin-left:40px;
+    margin-top: -20px;
+}
+.text .num{
+    font-size: 5em;
+}
+.monster{
+    position: relative;
+    height: 100px;
+    width: 100px;
+    border-radius: 20px;
+    background-color: #e55a54;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    animation: jumping 0.6s infinite alternate;
+}
+.monster.blue {
+    background-color: #0c4475;
+    animation-delay: 0.4s;
+}
+.monster .eye{
+    width: 40%;
+    height: 40%;
+    border-radius: 50%;
+    background-color: #fff;
+    margin:10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.monster .eye .eyeBall{
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+    background-color: #0c4475;
+    animation: eyemove 1.2s infinite alternate ;
+}
+.monster .mouth{
+    width:32%;
+    height: 12px;
+    border-radius: 12px;
+    background-color: #fff;
+}
+.monster::before,
+.monster::after{
+     position: absolute;
+     content: '';
+     display: block;
+     width: 20%;
+     height: 10px;
+     border-radius: 10px;
+     background-color: #fff;
+     top:-10px;
+     left: 50%;
+}
+.monster::before{
+    transform: translateX(-70%) rotate(45deg);
+}
+.monster::after{
+    transform: translateX(-30%) rotate(-45deg);  
+}
+
+.monster.blue .eyeBall,
+.monster.blue .mouth{
+    background-color: #db4b6d;
+}
+
+@keyframes jumping{
+    0%{
+        top:0;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    100%{
+        top:-50px;
+        box-shadow: 0 120px 20px rgba(0, 0, 0, 0.1);
+    }
+}
+
+@keyframes eyemove{
+    0%,
+    10%{
+        transform: translate(50%);
+    }
+    100%{
+        transform: translate(-50%);
+    }
+}
+
+.pageLoading{
+    width: 100%;
+    height: 100%;
+    background-color: #0c4475;
+    position: fixed;
+    top:0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+
+}
+.pageLoading .loading{
+    width: 200px;
+    height: 8px;
+    background-color: #fff;
+    border-radius: 8px;
+    margin-top: 15px;
+    overflow: hidden;
+}
+.pageLoading .loading .bar{
+    width: 100%;
+    height: 8px;
+    background-color: #e55a54;
+}
+.pageLoading.complete{
+    transition: opacity 0.6s;
+    opacity: 0;
+}
+.pageLoading.complete .monster{
+    transition: 0.5s;
+    transform: scale(0.1) rotateZ(360deg);
+}
